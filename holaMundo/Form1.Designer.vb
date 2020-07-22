@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -43,6 +44,17 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(187, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "BIENVENIDOS A PROGRAMACION I"
+
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New Point(20, 20)
+        Me.Label3.Size = New Size(187, 13)
+        Me.Label3.Name = "Label3"
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Mi etiqueta agregada manualmente"
+
         '
         'Form1
         '
@@ -51,6 +63,8 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(515, 359)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label3)
+
         Me.Name = "Form1"
         Me.Text = "Hola Mundo"
         Me.ResumeLayout(False)
@@ -60,4 +74,5 @@ Partial Class Form1
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class
