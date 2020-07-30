@@ -33,7 +33,7 @@ Partial Class Form1
         Me.optMultiplicar = New System.Windows.Forms.RadioButton()
         Me.optDividir = New System.Windows.Forms.RadioButton()
         Me.optPorcentaje = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.optExponenciacion = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
@@ -142,15 +142,15 @@ Partial Class Form1
         Me.optPorcentaje.Text = "Porcentaje"
         Me.optPorcentaje.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'optExponenciacion
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(162, 134)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(31, 17)
-        Me.RadioButton2.TabIndex = 11
-        Me.RadioButton2.Text = "^"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.optExponenciacion.AutoSize = True
+        Me.optExponenciacion.Location = New System.Drawing.Point(162, 134)
+        Me.optExponenciacion.Name = "optExponenciacion"
+        Me.optExponenciacion.Size = New System.Drawing.Size(31, 17)
+        Me.optExponenciacion.TabIndex = 11
+        Me.optExponenciacion.Text = "^"
+        Me.optExponenciacion.UseVisualStyleBackColor = True
         '
         'RadioButton3
         '
@@ -168,7 +168,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(464, 262)
         Me.Controls.Add(Me.RadioButton3)
-        Me.Controls.Add(Me.RadioButton2)
+        Me.Controls.Add(Me.optExponenciacion)
         Me.Controls.Add(Me.optPorcentaje)
         Me.Controls.Add(Me.optDividir)
         Me.Controls.Add(Me.optMultiplicar)
@@ -201,6 +201,6 @@ Partial Class Form1
     Friend WithEvents optMultiplicar As RadioButton
     Friend WithEvents optDividir As RadioButton
     Friend WithEvents optPorcentaje As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents optExponenciacion As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
 End Class

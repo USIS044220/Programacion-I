@@ -23,7 +23,11 @@
         End If
 
         If optPorcentaje.Checked Then
+            'Realizar el proceso de porcentaje....
+        End If
+        If optExponenciacion.Checked Then
             'Realizar el proceso de exponenciacion....
         End If
+        '...
     End Sub
 End Class
