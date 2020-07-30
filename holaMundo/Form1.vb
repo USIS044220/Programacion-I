@@ -21,5 +21,9 @@
         If optDividir.Checked Then
             lblrespuesta.Text = num1 / num2 'realizamos la division
         End If
+
+        If optPorcentaje.Checked Then
+            'Realizar el proceso de exponenciacion....
+        End If
     End Sub
 End Class

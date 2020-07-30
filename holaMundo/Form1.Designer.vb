@@ -32,7 +32,7 @@ Partial Class Form1
         Me.optResta = New System.Windows.Forms.RadioButton()
         Me.optMultiplicar = New System.Windows.Forms.RadioButton()
         Me.optDividir = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.optPorcentaje = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
@@ -132,15 +132,15 @@ Partial Class Form1
         Me.optDividir.Text = "/"
         Me.optDividir.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'optPorcentaje
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(162, 111)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(76, 17)
-        Me.RadioButton1.TabIndex = 10
-        Me.RadioButton1.Text = "Porcentaje"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.optPorcentaje.AutoSize = True
+        Me.optPorcentaje.Location = New System.Drawing.Point(162, 111)
+        Me.optPorcentaje.Name = "optPorcentaje"
+        Me.optPorcentaje.Size = New System.Drawing.Size(76, 17)
+        Me.optPorcentaje.TabIndex = 10
+        Me.optPorcentaje.Text = "Porcentaje"
+        Me.optPorcentaje.UseVisualStyleBackColor = True
         '
         'RadioButton2
         '
@@ -169,7 +169,7 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(464, 262)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
+        Me.Controls.Add(Me.optPorcentaje)
         Me.Controls.Add(Me.optDividir)
         Me.Controls.Add(Me.optMultiplicar)
         Me.Controls.Add(Me.optResta)
@@ -200,7 +200,7 @@ Partial Class Form1
     Friend WithEvents optResta As RadioButton
     Friend WithEvents optMultiplicar As RadioButton
     Friend WithEvents optDividir As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents optPorcentaje As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
 End Class
