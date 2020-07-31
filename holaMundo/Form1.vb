@@ -29,5 +29,18 @@
             'Realizar el proceso de exponenciacion....
         End If
         '...
+        Select Case cboOperaciones.SelectedIndex
+            Case 1 'Suma
+                lblrespuesta.Text = num1 + num2
+
+            Case 2 'Resta
+                lblrespuesta.Text = num1 - num2
+
+            Case 3 'Multiplicacion
+                lblrespuesta.Text = num1 * num2
+
+            Case 4 'Division
+                lblrespuesta.Text = num1 / num2
+        End Select
     End Sub
 End Class
