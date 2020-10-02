@@ -10,6 +10,7 @@
     End Sub
     Sub obtenerDatos()
         dataTable = objConexion.obtenerDatos().Tables("clientes")
+        dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("idCliente")}
         mostrarDatos()
     End Sub
     Sub mostrarDatos()
@@ -70,13 +71,15 @@
             Dim msg = objConexion.mantenimientoDatosCliente(New String() {
                 Me.Tag, txtCodigoCliente.Text, txtNombreCliente.Text, txtDireccionCliente.Text, txtTelefonoCliente.Text, txtEmailCliente.Text
             }, accion)
-
-            obtenerDatos()
-            HabDescontroles(True)
-            btnAgregarCliente.Text = "Nuevo"
-            btnModificarCliente.Text = "Modificar"
-
-            MessageBox.Show(msg, "Registro de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If msg = "error" Then
+                MessageBox.Show("Error al intentar guardar el registro, por favor intente nuevamente.", "Registro de Clientes",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                obtenerDatos()
+                HabDescontroles(True)
+                btnAgregarCliente.Text = "Nuevo"
+                btnModificarCliente.Text = "Modificar"
+            End If
         End If
     End Sub
 
@@ -117,6 +120,15 @@
                 posicion -= 1 'Hemos borrado un registro
             End If
             obtenerDatos()
+        End If
+    End Sub
+
+    Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
+        Dim objBuscarCliente As New frmBuscarClientes
+        objBuscarCliente.ShowDialog()
+        If objBuscarCliente._idC > 0 Then
+            posicion = dataTable.Rows.IndexOf(dataTable.Rows.Find(objBuscarCliente._idC))
+            mostrarDatos()
         End If
     End Sub
 End Class

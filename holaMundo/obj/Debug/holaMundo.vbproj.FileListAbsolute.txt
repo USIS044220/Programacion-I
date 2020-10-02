@@ -36,3 +36,4 @@ C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.vbp
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.exe
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.xml
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.pdb
+C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmBuscarClientes.resources
