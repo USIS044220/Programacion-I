@@ -36,6 +36,14 @@ Public Class db_conexion
         miAdapter.SelectCommand = miCommand
         miAdapter.Fill(ds, "clientes")
 
+        miCommand.CommandText = "select * from categorias"
+        miAdapter.SelectCommand = miCommand
+        miAdapter.Fill(ds, "categorias")
+
+        miCommand.CommandText = "select * from productos"
+        miAdapter.SelectCommand = miCommand
+        miAdapter.Fill(ds, "productos")
+
         'miCommand.CommandText = "select * from proveedores"
         'miAdapter.SelectCommand = miCommand
         'miAdapter.Fill(ds, "proveedores")

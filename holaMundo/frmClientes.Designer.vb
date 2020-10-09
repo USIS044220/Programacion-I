@@ -63,9 +63,9 @@ Partial Class frmClientes
         Me.grbDatos.Controls.Add(Me.lblCodigoCliente)
         Me.grbDatos.Enabled = False
         Me.grbDatos.Location = New System.Drawing.Point(17, 14)
-        Me.grbDatos.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbDatos.Margin = New System.Windows.Forms.Padding(1)
         Me.grbDatos.Name = "grbDatos"
-        Me.grbDatos.Padding = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbDatos.Padding = New System.Windows.Forms.Padding(1)
         Me.grbDatos.Size = New System.Drawing.Size(587, 449)
         Me.grbDatos.TabIndex = 0
         Me.grbDatos.TabStop = False
@@ -85,7 +85,7 @@ Partial Class frmClientes
         'txtEmailCliente
         '
         Me.txtEmailCliente.Location = New System.Drawing.Point(121, 377)
-        Me.txtEmailCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.txtEmailCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.txtEmailCliente.Name = "txtEmailCliente"
         Me.txtEmailCliente.Size = New System.Drawing.Size(333, 20)
         Me.txtEmailCliente.TabIndex = 9
@@ -104,7 +104,7 @@ Partial Class frmClientes
         'txtTelefonoCliente
         '
         Me.txtTelefonoCliente.Location = New System.Drawing.Point(121, 301)
-        Me.txtTelefonoCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.txtTelefonoCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.txtTelefonoCliente.Name = "txtTelefonoCliente"
         Me.txtTelefonoCliente.Size = New System.Drawing.Size(111, 20)
         Me.txtTelefonoCliente.TabIndex = 7
@@ -123,7 +123,7 @@ Partial Class frmClientes
         'txtDireccionCliente
         '
         Me.txtDireccionCliente.Location = New System.Drawing.Point(121, 154)
-        Me.txtDireccionCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.txtDireccionCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.txtDireccionCliente.Multiline = True
         Me.txtDireccionCliente.Name = "txtDireccionCliente"
         Me.txtDireccionCliente.Size = New System.Drawing.Size(333, 103)
@@ -143,7 +143,7 @@ Partial Class frmClientes
         'txtNombreCliente
         '
         Me.txtNombreCliente.Location = New System.Drawing.Point(121, 95)
-        Me.txtNombreCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.txtNombreCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.txtNombreCliente.Name = "txtNombreCliente"
         Me.txtNombreCliente.Size = New System.Drawing.Size(333, 20)
         Me.txtNombreCliente.TabIndex = 3
@@ -151,7 +151,7 @@ Partial Class frmClientes
         'txtCodigoCliente
         '
         Me.txtCodigoCliente.Location = New System.Drawing.Point(121, 36)
-        Me.txtCodigoCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.txtCodigoCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(95, 20)
         Me.txtCodigoCliente.TabIndex = 1
@@ -175,9 +175,9 @@ Partial Class frmClientes
         Me.grbNavegacion.Controls.Add(Me.btnAnteriorCliente)
         Me.grbNavegacion.Controls.Add(Me.btnPrimeroCliente)
         Me.grbNavegacion.Location = New System.Drawing.Point(17, 472)
-        Me.grbNavegacion.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbNavegacion.Margin = New System.Windows.Forms.Padding(1)
         Me.grbNavegacion.Name = "grbNavegacion"
-        Me.grbNavegacion.Padding = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbNavegacion.Padding = New System.Windows.Forms.Padding(1)
         Me.grbNavegacion.Size = New System.Drawing.Size(270, 68)
         Me.grbNavegacion.TabIndex = 1
         Me.grbNavegacion.TabStop = False
@@ -197,7 +197,7 @@ Partial Class frmClientes
         '
         Me.btnUltimoCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUltimoCliente.Location = New System.Drawing.Point(226, 19)
-        Me.btnUltimoCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnUltimoCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnUltimoCliente.Name = "btnUltimoCliente"
         Me.btnUltimoCliente.Size = New System.Drawing.Size(41, 39)
         Me.btnUltimoCliente.TabIndex = 3
@@ -208,7 +208,7 @@ Partial Class frmClientes
         '
         Me.btnSiguienteCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSiguienteCliente.Location = New System.Drawing.Point(187, 19)
-        Me.btnSiguienteCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnSiguienteCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnSiguienteCliente.Name = "btnSiguienteCliente"
         Me.btnSiguienteCliente.Size = New System.Drawing.Size(41, 39)
         Me.btnSiguienteCliente.TabIndex = 2
@@ -219,7 +219,7 @@ Partial Class frmClientes
         '
         Me.btnAnteriorCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAnteriorCliente.Location = New System.Drawing.Point(42, 19)
-        Me.btnAnteriorCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnAnteriorCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnAnteriorCliente.Name = "btnAnteriorCliente"
         Me.btnAnteriorCliente.Size = New System.Drawing.Size(41, 39)
         Me.btnAnteriorCliente.TabIndex = 1
@@ -230,7 +230,7 @@ Partial Class frmClientes
         '
         Me.btnPrimeroCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPrimeroCliente.Location = New System.Drawing.Point(2, 19)
-        Me.btnPrimeroCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnPrimeroCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnPrimeroCliente.Name = "btnPrimeroCliente"
         Me.btnPrimeroCliente.Size = New System.Drawing.Size(41, 39)
         Me.btnPrimeroCliente.TabIndex = 0
@@ -244,9 +244,9 @@ Partial Class frmClientes
         Me.grbEdicion.Controls.Add(Me.btnModificarCliente)
         Me.grbEdicion.Controls.Add(Me.btnAgregarCliente)
         Me.grbEdicion.Location = New System.Drawing.Point(289, 472)
-        Me.grbEdicion.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbEdicion.Margin = New System.Windows.Forms.Padding(1)
         Me.grbEdicion.Name = "grbEdicion"
-        Me.grbEdicion.Padding = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.grbEdicion.Padding = New System.Windows.Forms.Padding(1)
         Me.grbEdicion.Size = New System.Drawing.Size(315, 68)
         Me.grbEdicion.TabIndex = 2
         Me.grbEdicion.TabStop = False
@@ -256,7 +256,7 @@ Partial Class frmClientes
         '
         Me.btnBuscarCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscarCliente.Location = New System.Drawing.Point(237, 19)
-        Me.btnBuscarCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnBuscarCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnBuscarCliente.Name = "btnBuscarCliente"
         Me.btnBuscarCliente.Size = New System.Drawing.Size(75, 39)
         Me.btnBuscarCliente.TabIndex = 8
@@ -267,7 +267,7 @@ Partial Class frmClientes
         '
         Me.btnEliminarCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEliminarCliente.Location = New System.Drawing.Point(158, 19)
-        Me.btnEliminarCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnEliminarCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnEliminarCliente.Name = "btnEliminarCliente"
         Me.btnEliminarCliente.Size = New System.Drawing.Size(80, 39)
         Me.btnEliminarCliente.TabIndex = 7
@@ -278,7 +278,7 @@ Partial Class frmClientes
         '
         Me.btnModificarCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificarCliente.Location = New System.Drawing.Point(69, 19)
-        Me.btnModificarCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnModificarCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnModificarCliente.Name = "btnModificarCliente"
         Me.btnModificarCliente.Size = New System.Drawing.Size(90, 39)
         Me.btnModificarCliente.TabIndex = 6
@@ -289,7 +289,7 @@ Partial Class frmClientes
         '
         Me.btnAgregarCliente.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarCliente.Location = New System.Drawing.Point(2, 19)
-        Me.btnAgregarCliente.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.btnAgregarCliente.Margin = New System.Windows.Forms.Padding(1)
         Me.btnAgregarCliente.Name = "btnAgregarCliente"
         Me.btnAgregarCliente.Size = New System.Drawing.Size(68, 39)
         Me.btnAgregarCliente.TabIndex = 5
@@ -300,11 +300,11 @@ Partial Class frmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(614, 562)
+        Me.ClientSize = New System.Drawing.Size(622, 562)
         Me.Controls.Add(Me.grbEdicion)
         Me.Controls.Add(Me.grbNavegacion)
         Me.Controls.Add(Me.grbDatos)
-        Me.Margin = New System.Windows.Forms.Padding(1, 1, 1, 1)
+        Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "frmClientes"
         Me.Text = "Registro de Clientes"
         Me.grbDatos.ResumeLayout(False)
