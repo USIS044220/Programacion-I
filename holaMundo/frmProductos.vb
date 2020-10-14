@@ -16,6 +16,8 @@
         cboCategoriaProductos.DisplayMember = "categoria"
         cboCategoriaProductos.ValueMember = "categorias.idCategoria"
 
+        cboCategoriaProductos.AutoCompleteMode = AutoCompleteMode.Suggest
+        cboCategoriaProductos.AutoCompleteSource = AutoCompleteSource.ListItems
         mostrarDatos()
     End Sub
     Sub mostrarDatos()
@@ -31,7 +33,7 @@
             lblRegistrosProducto.Text = posicion + 1 & " de " & dataTable.Rows.Count
         Else
             limpiarDatosProductos()
-            MessageBox.Show("No hay registros que mostrar", "Registro de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("No hay registros que mostrar", "Registro de Productos", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
     Private Sub limpiarDatosProductos()
@@ -82,11 +84,11 @@
             HabDescontroles(False)
             limpiarDatosProductos()
         Else 'Guardar
-            Dim msg = objConexion.mantenimientoDatosCliente(New String() {
+            Dim msg = objConexion.mantenimientoDatosProductos(New String() {
                 Me.Tag, cboCategoriaProductos.SelectedValue, txtCodigoProducto.Text, txtDescripcionProducto.Text, txtMarcaProducto.Text, txtMedidasProducto.Text
             }, accion)
             If msg = "error" Then
-                MessageBox.Show("Error al intentar guardar el registro, por favor intente nuevamente.", "Registro de Clientes",
+                MessageBox.Show("Error al intentar guardar el registro, por favor intente nuevamente.", "Registro de Productos",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 obtenerDatos()
@@ -109,6 +111,27 @@
             HabDescontroles(True)
             btnAgregarProducto.Text = "Nuevo"
             btnModificarProducto.Text = "Modificar"
+        End If
+    End Sub
+    Private Sub btnEliminarProducto_Click(sender As Object, e As EventArgs) Handles btnEliminarProducto.Click
+        If MessageBox.Show("Esta seguro de eliminar " & txtDescripcionProducto.Text, "Registro de Productos", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
+            Dim msg = objConexion.mantenimientoDatosProductos(New String() {Me.Tag}, "eliminar")
+            If msg IsNot "error" Then
+                If posicion > 0 Then
+                    posicion -= 1
+                End If
+                obtenerDatos()
+                mostrarDatos()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnBuscarProducto_Click(sender As Object, e As EventArgs) Handles btnBuscarProducto.Click
+        Dim objBuscarProducto As New frmBuscarProductos
+        objBuscarProducto.ShowDialog()
+        If objBuscarProducto._idP > 0 Then
+            posicion = dataTable.Rows.IndexOf(dataTable.Rows.Find(objBuscarProducto._idP))
+            mostrarDatos()
         End If
     End Sub
 End Class
