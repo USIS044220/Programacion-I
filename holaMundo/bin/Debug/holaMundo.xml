@@ -27,6 +27,11 @@ holaMundo
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:holaMundo.My.Resources.Resources.fondo">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:holaMundo.My.Resources.Resources.products">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

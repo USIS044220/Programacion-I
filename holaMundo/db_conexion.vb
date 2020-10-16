@@ -28,6 +28,7 @@ Public Class db_conexion
         miCommand.Parameters.Add("@ema", SqlDbType.Char).Value = ""
         miCommand.Parameters.Add("@mar", SqlDbType.Char).Value = ""
         miCommand.Parameters.Add("@med", SqlDbType.Char).Value = ""
+        miCommand.Parameters.Add("@cat", SqlDbType.Char).Value = ""
     End Sub
     Public Function obtenerDatos()
         ds.Clear()
@@ -147,10 +148,35 @@ Public Class db_conexion
 
         Return msg
     End Function
+    Public Function mantenimientoDatosCategoria(ByVal datos As String(), ByVal accion As String)
+        Dim sql, msg As String
+        Select Case accion
+            Case "nuevo"
+                sql = "INSERT INTO categorias (categoria) VALUES(@cat)"
+            Case "modificar"
+                sql = "UPDATE categorias SET categoria=@cat WHERE idCategoria=@id"
+            Case "eliminar"
+                sql = "DELETE FROM categorias WHERE idCategoria=@id"
+        End Select
+        miCommand.Parameters("@id").Value = datos(0)
+        If accion IsNot "eliminar" Then
+            miCommand.Parameters("@cat").Value = datos(1)
+        End If
+        If executeSql(sql) > 0 Then
+            msg = "exito"
+        Else
+            msg = "error"
+        End If
+        Return msg
+    End Function
     Private Function executeSql(ByVal sql As String)
-        miCommand.Connection = miConexion
-        miCommand.CommandText = sql
-        Return miCommand.ExecuteNonQuery()
+        Try
+            miCommand.Connection = miConexion
+            miCommand.CommandText = sql
+            Return miCommand.ExecuteNonQuery()
+        Catch ex As Exception
+            Return 0
+        End Try
     End Function
 
 End Class

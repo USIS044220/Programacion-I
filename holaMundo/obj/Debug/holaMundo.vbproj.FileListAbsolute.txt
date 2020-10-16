@@ -39,3 +39,5 @@ C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.pdb
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmBuscarClientes.resources
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmProductos.resources
 C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmBuscarProductos.resources
+C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmCategorias.resources
+C:\Users\Luis Hernandez\Desktop\Programacion-I\holaMundo\obj\Debug\holaMundo.frmBuscarCategorias.resources

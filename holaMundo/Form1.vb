@@ -14,4 +14,9 @@
         objProductos.MdiParent = Me
         objProductos.Show()
     End Sub
+    Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
+        Dim objCategorias As New frmCategorias
+        objCategorias.MdiParent = Me
+        objCategorias.Show()
+    End Sub
 End Class

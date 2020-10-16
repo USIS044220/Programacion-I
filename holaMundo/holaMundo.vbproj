@@ -99,6 +99,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmBuscarCategorias.Designer.vb">
+      <DependentUpon>frmBuscarCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarCategorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBuscarClientes.Designer.vb">
       <DependentUpon>frmBuscarClientes.vb</DependentUpon>
     </Compile>
@@ -109,6 +115,12 @@
       <DependentUpon>frmBuscarProductos.vb</DependentUpon>
     </Compile>
     <Compile Include="frmBuscarProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategorias.Designer.vb">
+      <DependentUpon>frmCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategorias.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClientes.Designer.vb">
@@ -144,11 +156,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarCategorias.resx">
+      <DependentUpon>frmBuscarCategorias.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarClientes.resx">
       <DependentUpon>frmBuscarClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarProductos.resx">
       <DependentUpon>frmBuscarProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategorias.resx">
+      <DependentUpon>frmCategorias.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.vb</DependentUpon>
@@ -184,6 +202,7 @@
       <DependentUpon>db_sistema.mdf</DependentUpon>
     </Content>
     <Content Include="icono.ico" />
+    <None Include="Resources\fondo.jpg" />
     <None Include="Resources\products.png" />
     <None Include="Resources\provider.png" />
     <None Include="Resources\client.png" />
