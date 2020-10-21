@@ -44,6 +44,7 @@ Partial Class frmProductos
         Me.txtDescripcionProducto = New System.Windows.Forms.TextBox()
         Me.txtCodigoProducto = New System.Windows.Forms.TextBox()
         Me.lblCodigoProducto = New System.Windows.Forms.Label()
+        Me.btnBuscarCategoriaProducto = New System.Windows.Forms.Button()
         Me.grbEdicion.SuspendLayout()
         Me.grbNavegacion.SuspendLayout()
         Me.grbDatos.SuspendLayout()
@@ -180,6 +181,7 @@ Partial Class frmProductos
         '
         'grbDatos
         '
+        Me.grbDatos.Controls.Add(Me.btnBuscarCategoriaProducto)
         Me.grbDatos.Controls.Add(Me.cboCategoriaProductos)
         Me.grbDatos.Controls.Add(Me.lblCategoriaProducto)
         Me.grbDatos.Controls.Add(Me.lblMedidasProducto)
@@ -295,6 +297,17 @@ Partial Class frmProductos
         Me.lblCodigoProducto.TabIndex = 0
         Me.lblCodigoProducto.Text = "CODIGO:"
         '
+        'btnBuscarCategoriaProducto
+        '
+        Me.btnBuscarCategoriaProducto.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscarCategoriaProducto.Location = New System.Drawing.Point(336, 48)
+        Me.btnBuscarCategoriaProducto.Margin = New System.Windows.Forms.Padding(1)
+        Me.btnBuscarCategoriaProducto.Name = "btnBuscarCategoriaProducto"
+        Me.btnBuscarCategoriaProducto.Size = New System.Drawing.Size(157, 29)
+        Me.btnBuscarCategoriaProducto.TabIndex = 12
+        Me.btnBuscarCategoriaProducto.Text = "Buscar Categoria"
+        Me.btnBuscarCategoriaProducto.UseVisualStyleBackColor = True
+        '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -336,4 +349,5 @@ Partial Class frmProductos
     Friend WithEvents txtDescripcionProducto As TextBox
     Friend WithEvents txtCodigoProducto As TextBox
     Friend WithEvents lblCodigoProducto As Label
+    Friend WithEvents btnBuscarCategoriaProducto As Button
 End Class

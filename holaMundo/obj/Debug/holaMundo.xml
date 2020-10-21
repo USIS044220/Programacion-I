@@ -42,5 +42,150 @@ holaMundo
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="T:holaMundo.db_sistemaDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.categoriasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.clientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.contactosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.productosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.proveedoresDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.categoriasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.clientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.contactosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.productosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.proveedoresRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.categoriasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.clientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.contactosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.productosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.proveedoresRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.categoriasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.clientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.contactosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.productosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.proveedoresTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(holaMundo.db_sistemaDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(holaMundo.db_sistemaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(holaMundo.db_sistemaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.UpdateAll(holaMundo.db_sistemaDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 </members>
 </doc>

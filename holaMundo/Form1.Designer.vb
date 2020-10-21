@@ -69,7 +69,7 @@ Partial Class Form1
         'EmpleadosToolStripMenuItem
         '
         Me.EmpleadosToolStripMenuItem.Name = "EmpleadosToolStripMenuItem"
-        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.EmpleadosToolStripMenuItem.Text = "Empleados"
         '
         'ClientesToolStripMenuItem
@@ -77,7 +77,7 @@ Partial Class Form1
         Me.ClientesToolStripMenuItem.Image = Global.holaMundo.My.Resources.Resources.client
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
         Me.ClientesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'ProveedoresToolStripMenuItem
@@ -85,7 +85,7 @@ Partial Class Form1
         Me.ProveedoresToolStripMenuItem.Image = Global.holaMundo.My.Resources.Resources.provider
         Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
         Me.ProveedoresToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
         '
         'INVENTARIOToolStripMenuItem

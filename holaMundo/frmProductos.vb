@@ -134,4 +134,12 @@
             mostrarDatos()
         End If
     End Sub
+
+    Private Sub btnBuscarCategoriaProducto_Click(sender As Object, e As EventArgs) Handles btnBuscarCategoriaProducto.Click
+        Dim objBuscarCategoriaProducto As New frmBuscarCategorias
+        objBuscarCategoriaProducto.ShowDialog()
+        If objBuscarCategoriaProducto._idC > 0 Then
+            cboCategoriaProductos.SelectedValue = objBuscarCategoriaProducto._idC
+        End If
+    End Sub
 End Class
