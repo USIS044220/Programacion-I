@@ -72,6 +72,31 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:holaMundo.db_sistemaDataSet.tipofacturaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.pagosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasProductosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:holaMundo.db_sistemaDataSet.categoriasRow">
 <summary>
 Represents strongly named DataRow class.
@@ -93,6 +118,31 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:holaMundo.db_sistemaDataSet.proveedoresRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.tipofacturaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.pagosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasProductosRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -122,6 +172,31 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:holaMundo.db_sistemaDataSet.tipofacturaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.pagosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.dventasProductosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:holaMundo.db_sistemaDataSetTableAdapters.categoriasTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -143,6 +218,31 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:holaMundo.db_sistemaDataSetTableAdapters.proveedoresTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.tipofacturaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.pagosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.ventasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.dventasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.dventasProductosTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

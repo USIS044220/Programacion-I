@@ -33,12 +33,14 @@ Partial Class Form1
         Me.CategoriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VENTASToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FacturacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.EMPRESAToolStripMenuItem, Me.INVENTARIOToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.EMPRESAToolStripMenuItem, Me.INVENTARIOToolStripMenuItem, Me.VENTASToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(962, 24)
@@ -69,7 +71,7 @@ Partial Class Form1
         'EmpleadosToolStripMenuItem
         '
         Me.EmpleadosToolStripMenuItem.Name = "EmpleadosToolStripMenuItem"
-        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.EmpleadosToolStripMenuItem.Text = "Empleados"
         '
         'ClientesToolStripMenuItem
@@ -77,7 +79,7 @@ Partial Class Form1
         Me.ClientesToolStripMenuItem.Image = Global.holaMundo.My.Resources.Resources.client
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
         Me.ClientesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'ProveedoresToolStripMenuItem
@@ -85,7 +87,7 @@ Partial Class Form1
         Me.ProveedoresToolStripMenuItem.Image = Global.holaMundo.My.Resources.Resources.provider
         Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
         Me.ProveedoresToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
         '
         'INVENTARIOToolStripMenuItem
@@ -114,6 +116,19 @@ Partial Class Form1
         Me.ConsultaDeProductosToolStripMenuItem.Name = "ConsultaDeProductosToolStripMenuItem"
         Me.ConsultaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.ConsultaDeProductosToolStripMenuItem.Text = "Consulta de Productos"
+        '
+        'VENTASToolStripMenuItem
+        '
+        Me.VENTASToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FacturacionToolStripMenuItem})
+        Me.VENTASToolStripMenuItem.Name = "VENTASToolStripMenuItem"
+        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
+        Me.VENTASToolStripMenuItem.Text = "VENTAS"
+        '
+        'FacturacionToolStripMenuItem
+        '
+        Me.FacturacionToolStripMenuItem.Name = "FacturacionToolStripMenuItem"
+        Me.FacturacionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FacturacionToolStripMenuItem.Text = "Facturacion"
         '
         'Form1
         '
@@ -148,4 +163,6 @@ Partial Class Form1
     Friend WithEvents CategoriasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultaDeProductosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VENTASToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FacturacionToolStripMenuItem As ToolStripMenuItem
 End Class
