@@ -38,9 +38,9 @@
             iva = If(IdTipofacturaComboBox.SelectedValue = 4, sumas * 0.13, 0)
             total = sumas + iva
 
-            lblRespuestaSuma.Text = "$ " + sumas.ToString()
-            lblRespuestaIva.Text = "$ " + iva.ToString()
-            lblRespuestaTotal.Text = "$ " + total.ToString()
+            lblRespuestaSuma.Text = "$ " + Math.Round(sumas, 2).ToString()
+            lblRespuestaIva.Text = "$ " + Math.Round(iva, 2).ToString()
+            lblRespuestaTotal.Text = "$ " + Math.Round(total, 2).ToString()
 
             lblnregistros.Text = (VentasBindingSource.Position + 1) & " de " & VentasBindingSource.Count
         Catch ex As Exception

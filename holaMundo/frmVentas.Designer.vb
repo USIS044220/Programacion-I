@@ -28,6 +28,9 @@ Partial Class frmVentas
         Dim IdTipofacturaLabel As System.Windows.Forms.Label
         Dim IdPagoLabel As System.Windows.Forms.Label
         Dim IdClienteLabel As System.Windows.Forms.Label
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Db_sistemaDataSet = New holaMundo.db_sistemaDataSet()
         Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VentasTableAdapter = New holaMundo.db_sistemaDataSetTableAdapters.ventasTableAdapter()
@@ -53,6 +56,12 @@ Partial Class frmVentas
         Me.lbliva = New System.Windows.Forms.Label()
         Me.lblRespuestaSuma = New System.Windows.Forms.Label()
         Me.lblsuma = New System.Windows.Forms.Label()
+        Me.grbNavegacion = New System.Windows.Forms.GroupBox()
+        Me.lblnregistros = New System.Windows.Forms.Label()
+        Me.btnUltimo = New System.Windows.Forms.Button()
+        Me.btnSiguiente = New System.Windows.Forms.Button()
+        Me.btnAnterior = New System.Windows.Forms.Button()
+        Me.btnPrimero = New System.Windows.Forms.Button()
         Me.idDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,12 +72,6 @@ Partial Class frmVentas
         Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.medidas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grbNavegacion = New System.Windows.Forms.GroupBox()
-        Me.btnPrimero = New System.Windows.Forms.Button()
-        Me.btnAnterior = New System.Windows.Forms.Button()
-        Me.btnUltimo = New System.Windows.Forms.Button()
-        Me.btnSiguiente = New System.Windows.Forms.Button()
-        Me.lblnregistros = New System.Windows.Forms.Label()
         NfacturaLabel = New System.Windows.Forms.Label()
         Fecha_vtaLabel = New System.Windows.Forms.Label()
         IdTipofacturaLabel = New System.Windows.Forms.Label()
@@ -278,13 +281,14 @@ Partial Class frmVentas
         '
         'lblRespuestaTotal
         '
-        Me.lblRespuestaTotal.AutoSize = True
         Me.lblRespuestaTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaTotal.Location = New System.Drawing.Point(153, 76)
+        Me.lblRespuestaTotal.Location = New System.Drawing.Point(97, 76)
         Me.lblRespuestaTotal.Name = "lblRespuestaTotal"
-        Me.lblRespuestaTotal.Size = New System.Drawing.Size(39, 16)
+        Me.lblRespuestaTotal.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRespuestaTotal.Size = New System.Drawing.Size(100, 16)
         Me.lblRespuestaTotal.TabIndex = 5
         Me.lblRespuestaTotal.Text = "00.00"
+        Me.lblRespuestaTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbltotal
         '
@@ -298,13 +302,14 @@ Partial Class frmVentas
         '
         'lblRespuestaIva
         '
-        Me.lblRespuestaIva.AutoSize = True
         Me.lblRespuestaIva.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaIva.Location = New System.Drawing.Point(153, 44)
+        Me.lblRespuestaIva.Location = New System.Drawing.Point(97, 44)
         Me.lblRespuestaIva.Name = "lblRespuestaIva"
-        Me.lblRespuestaIva.Size = New System.Drawing.Size(39, 16)
+        Me.lblRespuestaIva.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRespuestaIva.Size = New System.Drawing.Size(100, 16)
         Me.lblRespuestaIva.TabIndex = 3
         Me.lblRespuestaIva.Text = "00.00"
+        Me.lblRespuestaIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbliva
         '
@@ -318,13 +323,14 @@ Partial Class frmVentas
         '
         'lblRespuestaSuma
         '
-        Me.lblRespuestaSuma.AutoSize = True
         Me.lblRespuestaSuma.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaSuma.Location = New System.Drawing.Point(153, 9)
+        Me.lblRespuestaSuma.Location = New System.Drawing.Point(97, 9)
         Me.lblRespuestaSuma.Name = "lblRespuestaSuma"
-        Me.lblRespuestaSuma.Size = New System.Drawing.Size(39, 16)
+        Me.lblRespuestaSuma.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRespuestaSuma.Size = New System.Drawing.Size(100, 16)
         Me.lblRespuestaSuma.TabIndex = 1
         Me.lblRespuestaSuma.Text = "00.00"
+        Me.lblRespuestaSuma.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblsuma
         '
@@ -335,6 +341,69 @@ Partial Class frmVentas
         Me.lblsuma.Size = New System.Drawing.Size(55, 16)
         Me.lblsuma.TabIndex = 0
         Me.lblsuma.Text = "SUMA:"
+        '
+        'grbNavegacion
+        '
+        Me.grbNavegacion.Controls.Add(Me.lblnregistros)
+        Me.grbNavegacion.Controls.Add(Me.btnUltimo)
+        Me.grbNavegacion.Controls.Add(Me.btnSiguiente)
+        Me.grbNavegacion.Controls.Add(Me.btnAnterior)
+        Me.grbNavegacion.Controls.Add(Me.btnPrimero)
+        Me.grbNavegacion.Location = New System.Drawing.Point(15, 516)
+        Me.grbNavegacion.Name = "grbNavegacion"
+        Me.grbNavegacion.Size = New System.Drawing.Size(200, 47)
+        Me.grbNavegacion.TabIndex = 16
+        Me.grbNavegacion.TabStop = False
+        Me.grbNavegacion.Text = "Navegacion"
+        '
+        'lblnregistros
+        '
+        Me.lblnregistros.AutoSize = True
+        Me.lblnregistros.Location = New System.Drawing.Point(72, 22)
+        Me.lblnregistros.Name = "lblnregistros"
+        Me.lblnregistros.Size = New System.Drawing.Size(36, 13)
+        Me.lblnregistros.TabIndex = 4
+        Me.lblnregistros.Text = "x de n"
+        '
+        'btnUltimo
+        '
+        Me.btnUltimo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUltimo.Location = New System.Drawing.Point(161, 15)
+        Me.btnUltimo.Name = "btnUltimo"
+        Me.btnUltimo.Size = New System.Drawing.Size(33, 25)
+        Me.btnUltimo.TabIndex = 3
+        Me.btnUltimo.Text = ">|"
+        Me.btnUltimo.UseVisualStyleBackColor = True
+        '
+        'btnSiguiente
+        '
+        Me.btnSiguiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSiguiente.Location = New System.Drawing.Point(129, 15)
+        Me.btnSiguiente.Name = "btnSiguiente"
+        Me.btnSiguiente.Size = New System.Drawing.Size(33, 25)
+        Me.btnSiguiente.TabIndex = 2
+        Me.btnSiguiente.Text = ">"
+        Me.btnSiguiente.UseVisualStyleBackColor = True
+        '
+        'btnAnterior
+        '
+        Me.btnAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnterior.Location = New System.Drawing.Point(38, 16)
+        Me.btnAnterior.Name = "btnAnterior"
+        Me.btnAnterior.Size = New System.Drawing.Size(33, 25)
+        Me.btnAnterior.TabIndex = 1
+        Me.btnAnterior.Text = "<"
+        Me.btnAnterior.UseVisualStyleBackColor = True
+        '
+        'btnPrimero
+        '
+        Me.btnPrimero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrimero.Location = New System.Drawing.Point(6, 16)
+        Me.btnPrimero.Name = "btnPrimero"
+        Me.btnPrimero.Size = New System.Drawing.Size(33, 25)
+        Me.btnPrimero.TabIndex = 0
+        Me.btnPrimero.Text = "|<"
+        Me.btnPrimero.UseVisualStyleBackColor = True
         '
         'idDetalle
         '
@@ -378,6 +447,8 @@ Partial Class frmVentas
         'cantidad
         '
         Me.cantidad.DataPropertyName = "cantidad"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.cantidad.DefaultCellStyle = DataGridViewCellStyle1
         Me.cantidad.HeaderText = "CANT"
         Me.cantidad.Name = "cantidad"
         Me.cantidad.ReadOnly = True
@@ -385,12 +456,16 @@ Partial Class frmVentas
         'precio
         '
         Me.precio.DataPropertyName = "precio"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.precio.DefaultCellStyle = DataGridViewCellStyle2
         Me.precio.HeaderText = "PRECIO"
         Me.precio.Name = "precio"
         Me.precio.ReadOnly = True
         '
         'subtotal
         '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle3
         Me.subtotal.HeaderText = "SUBTOTAL"
         Me.subtotal.Name = "subtotal"
         Me.subtotal.ReadOnly = True
@@ -411,69 +486,6 @@ Partial Class frmVentas
         Me.medidas.Name = "medidas"
         Me.medidas.ReadOnly = True
         Me.medidas.Visible = False
-        '
-        'grbNavegacion
-        '
-        Me.grbNavegacion.Controls.Add(Me.lblnregistros)
-        Me.grbNavegacion.Controls.Add(Me.btnUltimo)
-        Me.grbNavegacion.Controls.Add(Me.btnSiguiente)
-        Me.grbNavegacion.Controls.Add(Me.btnAnterior)
-        Me.grbNavegacion.Controls.Add(Me.btnPrimero)
-        Me.grbNavegacion.Location = New System.Drawing.Point(15, 516)
-        Me.grbNavegacion.Name = "grbNavegacion"
-        Me.grbNavegacion.Size = New System.Drawing.Size(200, 47)
-        Me.grbNavegacion.TabIndex = 16
-        Me.grbNavegacion.TabStop = False
-        Me.grbNavegacion.Text = "Navegacion"
-        '
-        'btnPrimero
-        '
-        Me.btnPrimero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrimero.Location = New System.Drawing.Point(6, 16)
-        Me.btnPrimero.Name = "btnPrimero"
-        Me.btnPrimero.Size = New System.Drawing.Size(33, 25)
-        Me.btnPrimero.TabIndex = 0
-        Me.btnPrimero.Text = "|<"
-        Me.btnPrimero.UseVisualStyleBackColor = True
-        '
-        'btnAnterior
-        '
-        Me.btnAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAnterior.Location = New System.Drawing.Point(38, 16)
-        Me.btnAnterior.Name = "btnAnterior"
-        Me.btnAnterior.Size = New System.Drawing.Size(33, 25)
-        Me.btnAnterior.TabIndex = 1
-        Me.btnAnterior.Text = "<"
-        Me.btnAnterior.UseVisualStyleBackColor = True
-        '
-        'btnUltimo
-        '
-        Me.btnUltimo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUltimo.Location = New System.Drawing.Point(161, 15)
-        Me.btnUltimo.Name = "btnUltimo"
-        Me.btnUltimo.Size = New System.Drawing.Size(33, 25)
-        Me.btnUltimo.TabIndex = 3
-        Me.btnUltimo.Text = ">|"
-        Me.btnUltimo.UseVisualStyleBackColor = True
-        '
-        'btnSiguiente
-        '
-        Me.btnSiguiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSiguiente.Location = New System.Drawing.Point(129, 15)
-        Me.btnSiguiente.Name = "btnSiguiente"
-        Me.btnSiguiente.Size = New System.Drawing.Size(33, 25)
-        Me.btnSiguiente.TabIndex = 2
-        Me.btnSiguiente.Text = ">"
-        Me.btnSiguiente.UseVisualStyleBackColor = True
-        '
-        'lblnregistros
-        '
-        Me.lblnregistros.AutoSize = True
-        Me.lblnregistros.Location = New System.Drawing.Point(72, 22)
-        Me.lblnregistros.Name = "lblnregistros"
-        Me.lblnregistros.Size = New System.Drawing.Size(36, 13)
-        Me.lblnregistros.TabIndex = 4
-        Me.lblnregistros.Text = "x de n"
         '
         'frmVentas
         '
@@ -536,6 +548,12 @@ Partial Class frmVentas
     Friend WithEvents lbliva As Label
     Friend WithEvents lblRespuestaSuma As Label
     Friend WithEvents lblsuma As Label
+    Friend WithEvents grbNavegacion As GroupBox
+    Friend WithEvents lblnregistros As Label
+    Friend WithEvents btnUltimo As Button
+    Friend WithEvents btnSiguiente As Button
+    Friend WithEvents btnAnterior As Button
+    Friend WithEvents btnPrimero As Button
     Friend WithEvents idDetalle As DataGridViewTextBoxColumn
     Friend WithEvents idVenta As DataGridViewTextBoxColumn
     Friend WithEvents idProducto As DataGridViewTextBoxColumn
@@ -546,10 +564,4 @@ Partial Class frmVentas
     Friend WithEvents subtotal As DataGridViewTextBoxColumn
     Friend WithEvents marca As DataGridViewTextBoxColumn
     Friend WithEvents medidas As DataGridViewTextBoxColumn
-    Friend WithEvents grbNavegacion As GroupBox
-    Friend WithEvents lblnregistros As Label
-    Friend WithEvents btnUltimo As Button
-    Friend WithEvents btnSiguiente As Button
-    Friend WithEvents btnAnterior As Button
-    Friend WithEvents btnPrimero As Button
 End Class
