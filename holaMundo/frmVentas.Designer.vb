@@ -28,9 +28,9 @@ Partial Class frmVentas
         Dim IdTipofacturaLabel As System.Windows.Forms.Label
         Dim IdPagoLabel As System.Windows.Forms.Label
         Dim IdClienteLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Db_sistemaDataSet = New holaMundo.db_sistemaDataSet()
         Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VentasTableAdapter = New holaMundo.db_sistemaDataSetTableAdapters.ventasTableAdapter()
@@ -49,6 +49,16 @@ Partial Class frmVentas
         Me.DventasProductosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DventasProductosTableAdapter = New holaMundo.db_sistemaDataSetTableAdapters.dventasProductosTableAdapter()
         Me.DventasProductosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.idDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.medidas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblRespuestaTotal = New System.Windows.Forms.Label()
         Me.lbltotal = New System.Windows.Forms.Label()
@@ -62,16 +72,17 @@ Partial Class frmVentas
         Me.btnSiguiente = New System.Windows.Forms.Button()
         Me.btnAnterior = New System.Windows.Forms.Button()
         Me.btnPrimero = New System.Windows.Forms.Button()
-        Me.idDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.medidas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.grbEdicion = New System.Windows.Forms.GroupBox()
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.grbdVentasProductos = New System.Windows.Forms.GroupBox()
+        Me.btnAgregarProducto = New System.Windows.Forms.Button()
+        Me.btnQuitarProducto = New System.Windows.Forms.Button()
+        Me.btnAgregarCliente = New System.Windows.Forms.Button()
+        Me.lblIdVenta = New System.Windows.Forms.Label()
+        Me.DventasTableAdapter1 = New holaMundo.db_sistemaDataSetTableAdapters.dventasTableAdapter()
         NfacturaLabel = New System.Windows.Forms.Label()
         Fecha_vtaLabel = New System.Windows.Forms.Label()
         IdTipofacturaLabel = New System.Windows.Forms.Label()
@@ -86,6 +97,8 @@ Partial Class frmVentas
         CType(Me.DventasProductosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.grbNavegacion.SuspendLayout()
+        Me.grbEdicion.SuspendLayout()
+        Me.grbdVentasProductos.SuspendLayout()
         Me.SuspendLayout()
         '
         'NfacturaLabel
@@ -178,12 +191,14 @@ Partial Class frmVentas
         Me.NfacturaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "nfactura", True))
         Me.NfacturaTextBox.Location = New System.Drawing.Point(644, 14)
         Me.NfacturaTextBox.Name = "NfacturaTextBox"
+        Me.NfacturaTextBox.ReadOnly = True
         Me.NfacturaTextBox.Size = New System.Drawing.Size(106, 20)
         Me.NfacturaTextBox.TabIndex = 4
         '
         'Fecha_vtaDateTimePicker
         '
         Me.Fecha_vtaDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.VentasBindingSource, "fecha_vta", True))
+        Me.Fecha_vtaDateTimePicker.Enabled = False
         Me.Fecha_vtaDateTimePicker.Location = New System.Drawing.Point(77, 55)
         Me.Fecha_vtaDateTimePicker.Name = "Fecha_vtaDateTimePicker"
         Me.Fecha_vtaDateTimePicker.Size = New System.Drawing.Size(217, 20)
@@ -195,6 +210,7 @@ Partial Class frmVentas
         Me.IdTipofacturaComboBox.DataSource = Me.TipofacturaBindingSource
         Me.IdTipofacturaComboBox.DisplayMember = "tipofactura"
         Me.IdTipofacturaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.IdTipofacturaComboBox.Enabled = False
         Me.IdTipofacturaComboBox.FormattingEnabled = True
         Me.IdTipofacturaComboBox.Location = New System.Drawing.Point(373, 53)
         Me.IdTipofacturaComboBox.Name = "IdTipofacturaComboBox"
@@ -213,6 +229,7 @@ Partial Class frmVentas
         Me.IdPagoComboBox.DataSource = Me.PagosBindingSource
         Me.IdPagoComboBox.DisplayMember = "pago"
         Me.IdPagoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.IdPagoComboBox.Enabled = False
         Me.IdPagoComboBox.FormattingEnabled = True
         Me.IdPagoComboBox.Location = New System.Drawing.Point(603, 53)
         Me.IdPagoComboBox.Name = "IdPagoComboBox"
@@ -231,6 +248,7 @@ Partial Class frmVentas
         Me.IdClienteComboBox.DataSource = Me.ClientesBindingSource
         Me.IdClienteComboBox.DisplayMember = "nombre"
         Me.IdClienteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.IdClienteComboBox.Enabled = False
         Me.IdClienteComboBox.FormattingEnabled = True
         Me.IdClienteComboBox.Location = New System.Drawing.Point(60, 14)
         Me.IdClienteComboBox.Name = "IdClienteComboBox"
@@ -265,6 +283,88 @@ Partial Class frmVentas
         Me.DventasProductosDataGridView.ReadOnly = True
         Me.DventasProductosDataGridView.Size = New System.Drawing.Size(743, 348)
         Me.DventasProductosDataGridView.TabIndex = 14
+        '
+        'idDetalle
+        '
+        Me.idDetalle.DataPropertyName = "idDetalle"
+        Me.idDetalle.HeaderText = "idDetalle"
+        Me.idDetalle.Name = "idDetalle"
+        Me.idDetalle.ReadOnly = True
+        Me.idDetalle.Visible = False
+        '
+        'idVenta
+        '
+        Me.idVenta.DataPropertyName = "idVenta"
+        Me.idVenta.HeaderText = "idVenta"
+        Me.idVenta.Name = "idVenta"
+        Me.idVenta.ReadOnly = True
+        Me.idVenta.Visible = False
+        '
+        'idProducto
+        '
+        Me.idProducto.DataPropertyName = "idProducto"
+        Me.idProducto.HeaderText = "idProducto"
+        Me.idProducto.Name = "idProducto"
+        Me.idProducto.ReadOnly = True
+        Me.idProducto.Visible = False
+        '
+        'codigo
+        '
+        Me.codigo.DataPropertyName = "codigo"
+        Me.codigo.HeaderText = "CODIGO"
+        Me.codigo.Name = "codigo"
+        Me.codigo.ReadOnly = True
+        '
+        'descripcion
+        '
+        Me.descripcion.DataPropertyName = "descripcion"
+        Me.descripcion.HeaderText = "DESCRIPCION"
+        Me.descripcion.Name = "descripcion"
+        Me.descripcion.ReadOnly = True
+        Me.descripcion.Width = 250
+        '
+        'cantidad
+        '
+        Me.cantidad.DataPropertyName = "cantidad"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.cantidad.DefaultCellStyle = DataGridViewCellStyle7
+        Me.cantidad.HeaderText = "CANT"
+        Me.cantidad.Name = "cantidad"
+        Me.cantidad.ReadOnly = True
+        '
+        'precio
+        '
+        Me.precio.DataPropertyName = "precio"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.precio.DefaultCellStyle = DataGridViewCellStyle8
+        Me.precio.HeaderText = "PRECIO"
+        Me.precio.Name = "precio"
+        Me.precio.ReadOnly = True
+        '
+        'subtotal
+        '
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle9
+        Me.subtotal.HeaderText = "SUBTOTAL"
+        Me.subtotal.Name = "subtotal"
+        Me.subtotal.ReadOnly = True
+        Me.subtotal.Width = 150
+        '
+        'marca
+        '
+        Me.marca.DataPropertyName = "marca"
+        Me.marca.HeaderText = "marca"
+        Me.marca.Name = "marca"
+        Me.marca.ReadOnly = True
+        Me.marca.Visible = False
+        '
+        'medidas
+        '
+        Me.medidas.DataPropertyName = "medidas"
+        Me.medidas.HeaderText = "medidas"
+        Me.medidas.Name = "medidas"
+        Me.medidas.ReadOnly = True
+        Me.medidas.Visible = False
         '
         'Panel1
         '
@@ -368,9 +468,9 @@ Partial Class frmVentas
         'btnUltimo
         '
         Me.btnUltimo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUltimo.Location = New System.Drawing.Point(161, 15)
+        Me.btnUltimo.Location = New System.Drawing.Point(160, 13)
         Me.btnUltimo.Name = "btnUltimo"
-        Me.btnUltimo.Size = New System.Drawing.Size(33, 25)
+        Me.btnUltimo.Size = New System.Drawing.Size(33, 31)
         Me.btnUltimo.TabIndex = 3
         Me.btnUltimo.Text = ">|"
         Me.btnUltimo.UseVisualStyleBackColor = True
@@ -378,9 +478,9 @@ Partial Class frmVentas
         'btnSiguiente
         '
         Me.btnSiguiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSiguiente.Location = New System.Drawing.Point(129, 15)
+        Me.btnSiguiente.Location = New System.Drawing.Point(128, 13)
         Me.btnSiguiente.Name = "btnSiguiente"
-        Me.btnSiguiente.Size = New System.Drawing.Size(33, 25)
+        Me.btnSiguiente.Size = New System.Drawing.Size(33, 31)
         Me.btnSiguiente.TabIndex = 2
         Me.btnSiguiente.Text = ">"
         Me.btnSiguiente.UseVisualStyleBackColor = True
@@ -388,9 +488,9 @@ Partial Class frmVentas
         'btnAnterior
         '
         Me.btnAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAnterior.Location = New System.Drawing.Point(38, 16)
+        Me.btnAnterior.Location = New System.Drawing.Point(37, 13)
         Me.btnAnterior.Name = "btnAnterior"
-        Me.btnAnterior.Size = New System.Drawing.Size(33, 25)
+        Me.btnAnterior.Size = New System.Drawing.Size(33, 31)
         Me.btnAnterior.TabIndex = 1
         Me.btnAnterior.Text = "<"
         Me.btnAnterior.UseVisualStyleBackColor = True
@@ -398,100 +498,134 @@ Partial Class frmVentas
         'btnPrimero
         '
         Me.btnPrimero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrimero.Location = New System.Drawing.Point(6, 16)
+        Me.btnPrimero.Location = New System.Drawing.Point(5, 13)
         Me.btnPrimero.Name = "btnPrimero"
-        Me.btnPrimero.Size = New System.Drawing.Size(33, 25)
+        Me.btnPrimero.Size = New System.Drawing.Size(33, 31)
         Me.btnPrimero.TabIndex = 0
         Me.btnPrimero.Text = "|<"
         Me.btnPrimero.UseVisualStyleBackColor = True
         '
-        'idDetalle
+        'grbEdicion
         '
-        Me.idDetalle.DataPropertyName = "idDetalle"
-        Me.idDetalle.HeaderText = "idDetalle"
-        Me.idDetalle.Name = "idDetalle"
-        Me.idDetalle.ReadOnly = True
-        Me.idDetalle.Visible = False
+        Me.grbEdicion.Controls.Add(Me.btnBuscar)
+        Me.grbEdicion.Controls.Add(Me.btnEliminar)
+        Me.grbEdicion.Controls.Add(Me.btnModificar)
+        Me.grbEdicion.Controls.Add(Me.btnAgregar)
+        Me.grbEdicion.Location = New System.Drawing.Point(221, 516)
+        Me.grbEdicion.Name = "grbEdicion"
+        Me.grbEdicion.Size = New System.Drawing.Size(319, 47)
+        Me.grbEdicion.TabIndex = 17
+        Me.grbEdicion.TabStop = False
+        Me.grbEdicion.Text = "Edicion"
         '
-        'idVenta
+        'btnAgregar
         '
-        Me.idVenta.DataPropertyName = "idVenta"
-        Me.idVenta.HeaderText = "idVenta"
-        Me.idVenta.Name = "idVenta"
-        Me.idVenta.ReadOnly = True
-        Me.idVenta.Visible = False
+        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregar.Location = New System.Drawing.Point(6, 14)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(76, 31)
+        Me.btnAgregar.TabIndex = 5
+        Me.btnAgregar.Text = "Nuevo"
+        Me.btnAgregar.UseVisualStyleBackColor = True
         '
-        'idProducto
+        'btnModificar
         '
-        Me.idProducto.DataPropertyName = "idProducto"
-        Me.idProducto.HeaderText = "idProducto"
-        Me.idProducto.Name = "idProducto"
-        Me.idProducto.ReadOnly = True
-        Me.idProducto.Visible = False
+        Me.btnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.Location = New System.Drawing.Point(81, 14)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(81, 31)
+        Me.btnModificar.TabIndex = 6
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
-        'codigo
+        'btnEliminar
         '
-        Me.codigo.DataPropertyName = "codigo"
-        Me.codigo.HeaderText = "CODIGO"
-        Me.codigo.Name = "codigo"
-        Me.codigo.ReadOnly = True
+        Me.btnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminar.Location = New System.Drawing.Point(161, 14)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(81, 31)
+        Me.btnEliminar.TabIndex = 7
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = True
         '
-        'descripcion
+        'btnBuscar
         '
-        Me.descripcion.DataPropertyName = "descripcion"
-        Me.descripcion.HeaderText = "DESCRIPCION"
-        Me.descripcion.Name = "descripcion"
-        Me.descripcion.ReadOnly = True
-        Me.descripcion.Width = 250
+        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.Location = New System.Drawing.Point(242, 14)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(71, 31)
+        Me.btnBuscar.TabIndex = 8
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
         '
-        'cantidad
+        'grbdVentasProductos
         '
-        Me.cantidad.DataPropertyName = "cantidad"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.cantidad.DefaultCellStyle = DataGridViewCellStyle1
-        Me.cantidad.HeaderText = "CANT"
-        Me.cantidad.Name = "cantidad"
-        Me.cantidad.ReadOnly = True
+        Me.grbdVentasProductos.Controls.Add(Me.btnQuitarProducto)
+        Me.grbdVentasProductos.Controls.Add(Me.btnAgregarProducto)
+        Me.grbdVentasProductos.Location = New System.Drawing.Point(15, 460)
+        Me.grbdVentasProductos.Name = "grbdVentasProductos"
+        Me.grbdVentasProductos.Size = New System.Drawing.Size(352, 50)
+        Me.grbdVentasProductos.TabIndex = 18
+        Me.grbdVentasProductos.TabStop = False
+        Me.grbdVentasProductos.Visible = False
         '
-        'precio
+        'btnAgregarProducto
         '
-        Me.precio.DataPropertyName = "precio"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.precio.DefaultCellStyle = DataGridViewCellStyle2
-        Me.precio.HeaderText = "PRECIO"
-        Me.precio.Name = "precio"
-        Me.precio.ReadOnly = True
+        Me.btnAgregarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarProducto.Location = New System.Drawing.Point(6, 13)
+        Me.btnAgregarProducto.Name = "btnAgregarProducto"
+        Me.btnAgregarProducto.Size = New System.Drawing.Size(165, 31)
+        Me.btnAgregarProducto.TabIndex = 9
+        Me.btnAgregarProducto.Text = "Agregar Productos"
+        Me.btnAgregarProducto.UseVisualStyleBackColor = True
         '
-        'subtotal
+        'btnQuitarProducto
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle3
-        Me.subtotal.HeaderText = "SUBTOTAL"
-        Me.subtotal.Name = "subtotal"
-        Me.subtotal.ReadOnly = True
-        Me.subtotal.Width = 150
+        Me.btnQuitarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuitarProducto.Location = New System.Drawing.Point(177, 13)
+        Me.btnQuitarProducto.Name = "btnQuitarProducto"
+        Me.btnQuitarProducto.Size = New System.Drawing.Size(165, 31)
+        Me.btnQuitarProducto.TabIndex = 10
+        Me.btnQuitarProducto.Text = "Quitar Productos"
+        Me.btnQuitarProducto.UseVisualStyleBackColor = True
         '
-        'marca
+        'btnAgregarCliente
         '
-        Me.marca.DataPropertyName = "marca"
-        Me.marca.HeaderText = "marca"
-        Me.marca.Name = "marca"
-        Me.marca.ReadOnly = True
-        Me.marca.Visible = False
+        Me.btnAgregarCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarCliente.Image = Global.holaMundo.My.Resources.Resources.client
+        Me.btnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAgregarCliente.Location = New System.Drawing.Point(300, 8)
+        Me.btnAgregarCliente.Name = "btnAgregarCliente"
+        Me.btnAgregarCliente.Size = New System.Drawing.Size(138, 31)
+        Me.btnAgregarCliente.TabIndex = 19
+        Me.btnAgregarCliente.Text = "Nuevo Cliente"
+        Me.btnAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAgregarCliente.UseVisualStyleBackColor = True
+        Me.btnAgregarCliente.Visible = False
         '
-        'medidas
+        'lblIdVenta
         '
-        Me.medidas.DataPropertyName = "medidas"
-        Me.medidas.HeaderText = "medidas"
-        Me.medidas.Name = "medidas"
-        Me.medidas.ReadOnly = True
-        Me.medidas.Visible = False
+        Me.lblIdVenta.AutoSize = True
+        Me.lblIdVenta.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "idVenta", True))
+        Me.lblIdVenta.Location = New System.Drawing.Point(444, 21)
+        Me.lblIdVenta.Name = "lblIdVenta"
+        Me.lblIdVenta.Size = New System.Drawing.Size(39, 13)
+        Me.lblIdVenta.TabIndex = 20
+        Me.lblIdVenta.Text = "Label1"
+        '
+        'DventasTableAdapter1
+        '
+        Me.DventasTableAdapter1.ClearBeforeFill = True
         '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(770, 569)
+        Me.Controls.Add(Me.lblIdVenta)
+        Me.Controls.Add(Me.btnAgregarCliente)
+        Me.Controls.Add(Me.grbdVentasProductos)
+        Me.Controls.Add(Me.grbEdicion)
         Me.Controls.Add(Me.grbNavegacion)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.DventasProductosDataGridView)
@@ -518,6 +652,8 @@ Partial Class frmVentas
         Me.Panel1.PerformLayout()
         Me.grbNavegacion.ResumeLayout(False)
         Me.grbNavegacion.PerformLayout()
+        Me.grbEdicion.ResumeLayout(False)
+        Me.grbdVentasProductos.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -564,4 +700,15 @@ Partial Class frmVentas
     Friend WithEvents subtotal As DataGridViewTextBoxColumn
     Friend WithEvents marca As DataGridViewTextBoxColumn
     Friend WithEvents medidas As DataGridViewTextBoxColumn
+    Friend WithEvents grbEdicion As GroupBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnAgregar As Button
+    Friend WithEvents grbdVentasProductos As GroupBox
+    Friend WithEvents btnQuitarProducto As Button
+    Friend WithEvents btnAgregarProducto As Button
+    Friend WithEvents btnAgregarCliente As Button
+    Friend WithEvents lblIdVenta As Label
+    Friend WithEvents DventasTableAdapter1 As db_sistemaDataSetTableAdapters.dventasTableAdapter
 End Class

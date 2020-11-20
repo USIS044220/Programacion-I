@@ -2986,7 +2986,6 @@ Partial Public Class db_sistemaDataSet
             Me.columnnfactura.AllowDBNull = false
             Me.columnnfactura.MaxLength = 10
             Me.columnfecha_vta.AllowDBNull = false
-            Me.columnfecha_hora_registro.AllowDBNull = false
             Me.columnidTipofactura.AllowDBNull = false
             Me.columnidPago.AllowDBNull = false
             Me.columnidCliente.AllowDBNull = false
@@ -4427,7 +4426,11 @@ Partial Public Class db_sistemaDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property fecha_hora_registro() As Date
             Get
-                Return CType(Me(Me.tableventas.fecha_hora_registroColumn),Date)
+                Try 
+                    Return CType(Me(Me.tableventas.fecha_hora_registroColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_hora_registro' de la tabla 'ventas' es DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableventas.fecha_hora_registroColumn) = value
@@ -4499,6 +4502,18 @@ Partial Public Class db_sistemaDataSet
                 Me.SetParentRow(value, Me.Table.ParentRelations("FK_ventas_tipofactura"))
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_hora_registroNull() As Boolean
+            Return Me.IsNull(Me.tableventas.fecha_hora_registroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_hora_registroNull()
+            Me(Me.tableventas.fecha_hora_registroColumn) = Global.System.Convert.DBNull
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -7772,13 +7787,15 @@ Namespace db_sistemaDataSetTableAdapters
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [ventas] WHERE (([idVenta] = @Original_idVenta) AND ([nfactura] = @Or"& _ 
-                "iginal_nfactura) AND ([fecha_vta] = @Original_fecha_vta) AND ([fecha_hora_regist"& _ 
-                "ro] = @Original_fecha_hora_registro) AND ([idTipofactura] = @Original_idTipofact"& _ 
-                "ura) AND ([idPago] = @Original_idPago) AND ([idCliente] = @Original_idCliente))"
+                "iginal_nfactura) AND ([fecha_vta] = @Original_fecha_vta) AND ((@IsNull_fecha_hor"& _ 
+                "a_registro = 1 AND [fecha_hora_registro] IS NULL) OR ([fecha_hora_registro] = @O"& _ 
+                "riginal_fecha_hora_registro)) AND ([idTipofactura] = @Original_idTipofactura) AN"& _ 
+                "D ([idPago] = @Original_idPago) AND ([idCliente] = @Original_idCliente))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idVenta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idVenta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_nfactura", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nfactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fecha_vta", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_vta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fecha_hora_registro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_hora_registro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fecha_hora_registro", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_hora_registro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idTipofactura", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idTipofactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7802,11 +7819,12 @@ Namespace db_sistemaDataSetTableAdapters
             Me._adapter.UpdateCommand.CommandText = "UPDATE [ventas] SET [nfactura] = @nfactura, [fecha_vta] = @fecha_vta, [fecha_hora"& _ 
                 "_registro] = @fecha_hora_registro, [idTipofactura] = @idTipofactura, [idPago] = "& _ 
                 "@idPago, [idCliente] = @idCliente WHERE (([idVenta] = @Original_idVenta) AND ([n"& _ 
-                "factura] = @Original_nfactura) AND ([fecha_vta] = @Original_fecha_vta) AND ([fec"& _ 
-                "ha_hora_registro] = @Original_fecha_hora_registro) AND ([idTipofactura] = @Origi"& _ 
-                "nal_idTipofactura) AND ([idPago] = @Original_idPago) AND ([idCliente] = @Origina"& _ 
-                "l_idCliente));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idVenta, nfactura, fecha_vta, fecha_hora_registro, idTipo"& _ 
-                "factura, idPago, idCliente FROM ventas WHERE (idVenta = @idVenta)"
+                "factura] = @Original_nfactura) AND ([fecha_vta] = @Original_fecha_vta) AND ((@Is"& _ 
+                "Null_fecha_hora_registro = 1 AND [fecha_hora_registro] IS NULL) OR ([fecha_hora_"& _ 
+                "registro] = @Original_fecha_hora_registro)) AND ([idTipofactura] = @Original_idT"& _ 
+                "ipofactura) AND ([idPago] = @Original_idPago) AND ([idCliente] = @Original_idCli"& _ 
+                "ente));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idVenta, nfactura, fecha_vta, fecha_hora_registro, idTipofactura"& _ 
+                ", idPago, idCliente FROM ventas WHERE (idVenta = @idVenta)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@nfactura", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nfactura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecha_vta", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_vta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7817,6 +7835,7 @@ Namespace db_sistemaDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idVenta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idVenta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_nfactura", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nfactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fecha_vta", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_vta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fecha_hora_registro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_hora_registro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fecha_hora_registro", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_hora_registro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idTipofactura", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idTipofactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7898,7 +7917,7 @@ Namespace db_sistemaDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Date, ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Global.System.Nullable(Of Date), ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_idVenta,Integer)
             If (Original_nfactura Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_nfactura")
@@ -7906,10 +7925,16 @@ Namespace db_sistemaDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_nfactura,String)
             End If
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_fecha_vta,Date)
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_fecha_hora_registro,Date)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_idTipofactura,Integer)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_idPago,Integer)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_idCliente,Integer)
+            If (Original_fecha_hora_registro.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_fecha_hora_registro.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_idTipofactura,Integer)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_idPago,Integer)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_idCliente,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7929,14 +7954,18 @@ Namespace db_sistemaDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Date, ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Global.System.Nullable(Of Date), ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer) As Integer
             If (nfactura Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("nfactura")
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(nfactura,String)
             End If
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(fecha_vta,Date)
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(fecha_hora_registro,Date)
+            If (fecha_hora_registro.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(fecha_hora_registro.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
             Me.Adapter.InsertCommand.Parameters(3).Value = CType(idTipofactura,Integer)
             Me.Adapter.InsertCommand.Parameters(4).Value = CType(idPago,Integer)
             Me.Adapter.InsertCommand.Parameters(5).Value = CType(idCliente,Integer)
@@ -7959,14 +7988,18 @@ Namespace db_sistemaDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Date, ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer, ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Date, ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer, ByVal idVenta As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Global.System.Nullable(Of Date), ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer, ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Global.System.Nullable(Of Date), ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer, ByVal idVenta As Integer) As Integer
             If (nfactura Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("nfactura")
             Else
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(nfactura,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(1).Value = CType(fecha_vta,Date)
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(fecha_hora_registro,Date)
+            If (fecha_hora_registro.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(fecha_hora_registro.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
             Me.Adapter.UpdateCommand.Parameters(3).Value = CType(idTipofactura,Integer)
             Me.Adapter.UpdateCommand.Parameters(4).Value = CType(idPago,Integer)
             Me.Adapter.UpdateCommand.Parameters(5).Value = CType(idCliente,Integer)
@@ -7977,11 +8010,17 @@ Namespace db_sistemaDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_nfactura,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_fecha_vta,Date)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_fecha_hora_registro,Date)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_idTipofactura,Integer)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_idPago,Integer)
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_idCliente,Integer)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(idVenta,Integer)
+            If (Original_fecha_hora_registro.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_fecha_hora_registro.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_idTipofactura,Integer)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_idPago,Integer)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_idCliente,Integer)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(idVenta,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8001,7 +8040,7 @@ Namespace db_sistemaDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Date, ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer, ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Date, ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal nfactura As String, ByVal fecha_vta As Date, ByVal fecha_hora_registro As Global.System.Nullable(Of Date), ByVal idTipofactura As Integer, ByVal idPago As Integer, ByVal idCliente As Integer, ByVal Original_idVenta As Integer, ByVal Original_nfactura As String, ByVal Original_fecha_vta As Date, ByVal Original_fecha_hora_registro As Global.System.Nullable(Of Date), ByVal Original_idTipofactura As Integer, ByVal Original_idPago As Integer, ByVal Original_idCliente As Integer) As Integer
             Return Me.Update(nfactura, fecha_vta, fecha_hora_registro, idTipofactura, idPago, idCliente, Original_idVenta, Original_nfactura, Original_fecha_vta, Original_fecha_hora_registro, Original_idTipofactura, Original_idPago, Original_idCliente, Original_idVenta)
         End Function
     End Class

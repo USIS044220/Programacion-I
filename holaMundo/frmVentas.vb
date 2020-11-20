@@ -1,12 +1,14 @@
-﻿Public Class frmVentas
-    Private Sub VentasBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.VentasBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.Db_sistemaDataSet)
+﻿Imports System.Data.SqlClient
+Public Class frmVentas
+
+    Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        actualizarDs()
+        totalizar()
 
     End Sub
 
-    Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub actualizarDs()
         'TODO: esta línea de código carga datos en la tabla 'Db_sistemaDataSet.pagos' Puede moverla o quitarla según sea necesario.
         Me.PagosTableAdapter.FillPagos(Me.Db_sistemaDataSet.pagos)
         'TODO: esta línea de código carga datos en la tabla 'Db_sistemaDataSet.tipofactura' Puede moverla o quitarla según sea necesario.
@@ -17,9 +19,6 @@
         Me.DventasProductosTableAdapter.FillDventasProductos(Me.Db_sistemaDataSet.dventasProductos)
         'TODO: esta línea de código carga datos en la tabla 'Db_sistemaDataSet.ventas' Puede moverla o quitarla según sea necesario.
         Me.VentasTableAdapter.FillVentas(Me.Db_sistemaDataSet.ventas)
-
-        totalizar()
-
     End Sub
 
     Private Sub totalizar()
@@ -44,7 +43,7 @@
 
             lblnregistros.Text = (VentasBindingSource.Position + 1) & " de " & VentasBindingSource.Count
         Catch ex As Exception
-            MessageBox.Show("Error " + ex.Message)
+            'MessageBox.Show("Error " + ex.Message)
         End Try
     End Sub
 
@@ -66,5 +65,137 @@
     Private Sub btnUltimo_Click(sender As Object, e As EventArgs) Handles btnUltimo.Click
         VentasBindingSource.MoveLast()
         totalizar()
+    End Sub
+
+    Private Sub habdesh_controles(ByVal valor As Boolean)
+        NfacturaTextBox.ReadOnly = valor
+        IdClienteComboBox.Enabled = Not valor
+        Fecha_vtaDateTimePicker.Enabled = Not valor
+        IdTipofacturaComboBox.Enabled = Not valor
+        IdPagoComboBox.Enabled = Not valor
+        DventasProductosDataGridView.ReadOnly = valor
+
+        grbdVentasProductos.Visible = Not valor
+        grbNavegacion.Visible = valor
+        btnAgregarCliente.Visible = Not valor
+
+        btnEliminar.Enabled = valor
+        btnBuscar.Enabled = valor
+    End Sub
+
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        If btnAgregar.Text = "Nuevo" Then
+            btnAgregar.Text = "Guardar"
+            btnModificar.Text = "Cancelar"
+
+            habdesh_controles(False)
+            VentasBindingSource.AddNew()
+
+            IdClienteComboBox.SelectedValue = 1 'Cliente por default Ventas a Publico
+            IdTipofacturaComboBox.SelectedValue = 3 'Tipo de factura por default consumidor final 
+            IdPagoComboBox.SelectedValue = 1 'Tipo de Pago por default efectivo
+            Fecha_vtaDateTimePicker.Value = Date.Now
+        Else 'Guardar
+            Try
+                Dim _idVenta = Integer.Parse(lblIdVenta.Text)
+                Me.Validate()
+                VentasBindingSource.EndEdit()
+
+                VentasTableAdapter.Connection.Open()
+                Dim comando As New SqlCommand
+                comando.Connection = VentasTableAdapter.Connection
+                If _idVenta > 0 Then 'Modificanco
+                    comando.CommandText = "delete from dventas where idVenta=" + _idVenta.ToString()
+                    comando.ExecuteNonQuery()
+                Else 'Agregando Nuevas Facturas
+                    comando.CommandText = "SELECT ident_current('ventas') + 1 AS idVenta"
+                    _idVenta = Integer.Parse(comando.ExecuteScalar().ToString())
+                End If
+                VentasTableAdapter.Connection.Close()
+
+                Dim nfilas As Integer = DventasProductosDataGridView.Rows.Count
+                Dim valores(nfilas, 3) As String
+                Dim fila As New DataGridViewRow
+
+                For i = 0 To nfilas - 1
+                    fila = DventasProductosDataGridView.Rows(i)
+
+                    valores(i, 0) = fila.Cells("idProducto").Value.ToString()
+                    valores(i, 1) = fila.Cells("cantidad").Value.ToString()
+                    valores(i, 2) = fila.Cells("precio").Value.ToString()
+                Next
+                TableAdapterManager.UpdateAll(Db_sistemaDataSet)
+
+                For i = 0 To nfilas - 1
+                    DventasTableAdapter1.Insert(
+                        _idVenta,
+                        valores(i, 0),
+                        valores(i, 1),
+                        valores(i, 2)
+                    )
+                Next
+                actualizarDs()
+                VentasBindingSource.MoveLast()
+
+                habdesh_controles(True)
+                btnAgregar.Text = "Nuevo"
+                btnModificar.Text = "Modificar"
+            Catch ex As Exception
+                MessageBox.Show("Error al intentar guardar: " + ex.Message,
+                    "Registro de Facturas de Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+        End If
+    End Sub
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If btnModificar.Text = "Modificar" Then
+            btnAgregar.Text = "Guardar"
+            btnModificar.Text = "Cancelar"
+
+            habdesh_controles(False)
+        Else 'Cancelar
+            DventasProductosBindingSource.CancelEdit()
+            VentasBindingSource.CancelEdit()
+
+            habdesh_controles(True)
+            btnAgregar.Text = "Nuevo"
+            btnModificar.Text = "Modificar"
+        End If
+    End Sub
+    Private Sub btnAgregarProducto_Click(sender As Object, e As EventArgs) Handles btnAgregarProducto.Click
+        Dim objBuscarProductos As New frmBuscarProductos
+        objBuscarProductos.ShowDialog()
+        If objBuscarProductos._idP > 0 Then
+            DventasProductosBindingSource.AddNew()
+            DventasProductosDataGridView.CurrentRow.Cells("idProducto").Value = objBuscarProductos._idP
+            DventasProductosDataGridView.CurrentRow.Cells("codigo").Value = objBuscarProductos._codigoProducto
+            DventasProductosDataGridView.CurrentRow.Cells("descripcion").Value = objBuscarProductos._nombreProducto
+            DventasProductosDataGridView.CurrentRow.Cells("marca").Value = ""
+            DventasProductosDataGridView.CurrentRow.Cells("medidas").Value = ""
+
+            DventasProductosDataGridView.CurrentRow.Cells("cantidad").Value = 1
+            DventasProductosDataGridView.CurrentRow.Cells("precio").Value = 0
+        End If
+    End Sub
+
+    Private Sub DventasProductosDataGridView_KeyUp(sender As Object, e As KeyEventArgs) Handles DventasProductosDataGridView.KeyUp
+        Try
+            totalizar()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub btnQuitarProducto_Click(sender As Object, e As EventArgs) Handles btnQuitarProducto.Click
+        Try
+            DventasProductosDataGridView.Rows.Remove(DventasProductosDataGridView.CurrentRow)
+            totalizar()
+        Catch ex As Exception
+            MessageBox.Show("Error al intentar quitar la fila: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
+        Dim objClientes As New frmClientes
+        objClientes.Show()
     End Sub
 End Class

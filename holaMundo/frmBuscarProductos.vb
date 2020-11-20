@@ -1,6 +1,8 @@
 ﻿Public Class frmBuscarProductos
     Dim objConexion As New db_conexion
     Public _idP As Integer
+    Public _codigoProducto As String
+    Public _nombreProducto As String
     Private Sub frmBuscarProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         grdBuscarProducto.DataSource = objConexion.obtenerDatos().Tables("productos").DefaultView
     End Sub
@@ -12,6 +14,8 @@
     End Sub
     Private Sub seleccionarProducto()
         _idP = grdBuscarProducto.CurrentRow.Cells("idProducto").Value.ToString()
+        _codigoProducto = grdBuscarProducto.CurrentRow.Cells("codigo").Value.ToString()
+        _nombreProducto = grdBuscarProducto.CurrentRow.Cells("nombre").Value.ToString()
         Close()
     End Sub
     Private Sub btnSeleccionarProductos_Click(sender As Object, e As EventArgs) Handles btnSeleccionarProductos.Click
