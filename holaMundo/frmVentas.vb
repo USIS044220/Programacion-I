@@ -198,4 +198,10 @@ Public Class frmVentas
         Dim objClientes As New frmClientes
         objClientes.Show()
     End Sub
+
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        Dim objImprimirVta As New frmImpresionVentas
+        objImprimirVta._idVta = lblIdVenta.Text
+        objImprimirVta.ShowDialog()
+    End Sub
 End Class

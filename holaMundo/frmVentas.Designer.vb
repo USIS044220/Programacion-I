@@ -28,9 +28,9 @@ Partial Class frmVentas
         Dim IdTipofacturaLabel As System.Windows.Forms.Label
         Dim IdPagoLabel As System.Windows.Forms.Label
         Dim IdClienteLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Db_sistemaDataSet = New holaMundo.db_sistemaDataSet()
         Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VentasTableAdapter = New holaMundo.db_sistemaDataSetTableAdapters.ventasTableAdapter()
@@ -73,13 +73,14 @@ Partial Class frmVentas
         Me.btnAnterior = New System.Windows.Forms.Button()
         Me.btnPrimero = New System.Windows.Forms.Button()
         Me.grbEdicion = New System.Windows.Forms.GroupBox()
-        Me.btnAgregar = New System.Windows.Forms.Button()
-        Me.btnModificar = New System.Windows.Forms.Button()
-        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnAgregar = New System.Windows.Forms.Button()
         Me.grbdVentasProductos = New System.Windows.Forms.GroupBox()
-        Me.btnAgregarProducto = New System.Windows.Forms.Button()
         Me.btnQuitarProducto = New System.Windows.Forms.Button()
+        Me.btnAgregarProducto = New System.Windows.Forms.Button()
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
         Me.lblIdVenta = New System.Windows.Forms.Label()
         Me.DventasTableAdapter1 = New holaMundo.db_sistemaDataSetTableAdapters.dventasTableAdapter()
@@ -326,8 +327,8 @@ Partial Class frmVentas
         'cantidad
         '
         Me.cantidad.DataPropertyName = "cantidad"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.cantidad.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.cantidad.DefaultCellStyle = DataGridViewCellStyle1
         Me.cantidad.HeaderText = "CANT"
         Me.cantidad.Name = "cantidad"
         Me.cantidad.ReadOnly = True
@@ -335,16 +336,16 @@ Partial Class frmVentas
         'precio
         '
         Me.precio.DataPropertyName = "precio"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.precio.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.precio.DefaultCellStyle = DataGridViewCellStyle2
         Me.precio.HeaderText = "PRECIO"
         Me.precio.Name = "precio"
         Me.precio.ReadOnly = True
         '
         'subtotal
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle3
         Me.subtotal.HeaderText = "SUBTOTAL"
         Me.subtotal.Name = "subtotal"
         Me.subtotal.ReadOnly = True
@@ -374,18 +375,18 @@ Partial Class frmVentas
         Me.Panel1.Controls.Add(Me.lbliva)
         Me.Panel1.Controls.Add(Me.lblRespuestaSuma)
         Me.Panel1.Controls.Add(Me.lblsuma)
-        Me.Panel1.Location = New System.Drawing.Point(558, 459)
+        Me.Panel1.Location = New System.Drawing.Point(599, 460)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 104)
+        Me.Panel1.Size = New System.Drawing.Size(159, 104)
         Me.Panel1.TabIndex = 15
         '
         'lblRespuestaTotal
         '
         Me.lblRespuestaTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaTotal.Location = New System.Drawing.Point(97, 76)
+        Me.lblRespuestaTotal.Location = New System.Drawing.Point(77, 70)
         Me.lblRespuestaTotal.Name = "lblRespuestaTotal"
         Me.lblRespuestaTotal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblRespuestaTotal.Size = New System.Drawing.Size(100, 16)
+        Me.lblRespuestaTotal.Size = New System.Drawing.Size(79, 22)
         Me.lblRespuestaTotal.TabIndex = 5
         Me.lblRespuestaTotal.Text = "00.00"
         Me.lblRespuestaTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -394,7 +395,7 @@ Partial Class frmVentas
         '
         Me.lbltotal.AutoSize = True
         Me.lbltotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltotal.Location = New System.Drawing.Point(16, 76)
+        Me.lbltotal.Location = New System.Drawing.Point(8, 76)
         Me.lbltotal.Name = "lbltotal"
         Me.lbltotal.Size = New System.Drawing.Size(61, 16)
         Me.lbltotal.TabIndex = 4
@@ -403,10 +404,10 @@ Partial Class frmVentas
         'lblRespuestaIva
         '
         Me.lblRespuestaIva.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaIva.Location = New System.Drawing.Point(97, 44)
+        Me.lblRespuestaIva.Location = New System.Drawing.Point(77, 44)
         Me.lblRespuestaIva.Name = "lblRespuestaIva"
         Me.lblRespuestaIva.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblRespuestaIva.Size = New System.Drawing.Size(100, 16)
+        Me.lblRespuestaIva.Size = New System.Drawing.Size(79, 16)
         Me.lblRespuestaIva.TabIndex = 3
         Me.lblRespuestaIva.Text = "00.00"
         Me.lblRespuestaIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -415,7 +416,7 @@ Partial Class frmVentas
         '
         Me.lbliva.AutoSize = True
         Me.lbliva.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbliva.Location = New System.Drawing.Point(16, 44)
+        Me.lbliva.Location = New System.Drawing.Point(8, 44)
         Me.lbliva.Name = "lbliva"
         Me.lbliva.Size = New System.Drawing.Size(36, 16)
         Me.lbliva.TabIndex = 2
@@ -424,10 +425,10 @@ Partial Class frmVentas
         'lblRespuestaSuma
         '
         Me.lblRespuestaSuma.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRespuestaSuma.Location = New System.Drawing.Point(97, 9)
+        Me.lblRespuestaSuma.Location = New System.Drawing.Point(77, 9)
         Me.lblRespuestaSuma.Name = "lblRespuestaSuma"
         Me.lblRespuestaSuma.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblRespuestaSuma.Size = New System.Drawing.Size(100, 16)
+        Me.lblRespuestaSuma.Size = New System.Drawing.Size(79, 16)
         Me.lblRespuestaSuma.TabIndex = 1
         Me.lblRespuestaSuma.Text = "00.00"
         Me.lblRespuestaSuma.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -436,7 +437,7 @@ Partial Class frmVentas
         '
         Me.lblsuma.AutoSize = True
         Me.lblsuma.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblsuma.Location = New System.Drawing.Point(16, 9)
+        Me.lblsuma.Location = New System.Drawing.Point(8, 9)
         Me.lblsuma.Name = "lblsuma"
         Me.lblsuma.Size = New System.Drawing.Size(55, 16)
         Me.lblsuma.TabIndex = 0
@@ -507,56 +508,67 @@ Partial Class frmVentas
         '
         'grbEdicion
         '
+        Me.grbEdicion.Controls.Add(Me.btnImprimir)
         Me.grbEdicion.Controls.Add(Me.btnBuscar)
         Me.grbEdicion.Controls.Add(Me.btnEliminar)
         Me.grbEdicion.Controls.Add(Me.btnModificar)
         Me.grbEdicion.Controls.Add(Me.btnAgregar)
-        Me.grbEdicion.Location = New System.Drawing.Point(221, 516)
+        Me.grbEdicion.Location = New System.Drawing.Point(218, 516)
         Me.grbEdicion.Name = "grbEdicion"
-        Me.grbEdicion.Size = New System.Drawing.Size(319, 47)
+        Me.grbEdicion.Size = New System.Drawing.Size(375, 47)
         Me.grbEdicion.TabIndex = 17
         Me.grbEdicion.TabStop = False
         Me.grbEdicion.Text = "Edicion"
         '
-        'btnAgregar
+        'btnImprimir
         '
-        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregar.Location = New System.Drawing.Point(6, 14)
-        Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(76, 31)
-        Me.btnAgregar.TabIndex = 5
-        Me.btnAgregar.Text = "Nuevo"
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimir.Location = New System.Drawing.Point(299, 12)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(75, 31)
+        Me.btnImprimir.TabIndex = 9
+        Me.btnImprimir.Text = "Imprimir"
+        Me.btnImprimir.UseVisualStyleBackColor = True
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.Location = New System.Drawing.Point(231, 12)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(69, 31)
+        Me.btnBuscar.TabIndex = 8
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
+        'btnEliminar
+        '
+        Me.btnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminar.Location = New System.Drawing.Point(157, 12)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(75, 31)
+        Me.btnEliminar.TabIndex = 7
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'btnModificar
         '
         Me.btnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.Location = New System.Drawing.Point(81, 14)
+        Me.btnModificar.Location = New System.Drawing.Point(77, 12)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(81, 31)
         Me.btnModificar.TabIndex = 6
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
-        'btnEliminar
+        'btnAgregar
         '
-        Me.btnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminar.Location = New System.Drawing.Point(161, 14)
-        Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(81, 31)
-        Me.btnEliminar.TabIndex = 7
-        Me.btnEliminar.Text = "Eliminar"
-        Me.btnEliminar.UseVisualStyleBackColor = True
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.Location = New System.Drawing.Point(242, 14)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(71, 31)
-        Me.btnBuscar.TabIndex = 8
-        Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
+        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregar.Location = New System.Drawing.Point(2, 12)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(76, 31)
+        Me.btnAgregar.TabIndex = 5
+        Me.btnAgregar.Text = "Nuevo"
+        Me.btnAgregar.UseVisualStyleBackColor = True
         '
         'grbdVentasProductos
         '
@@ -569,16 +581,6 @@ Partial Class frmVentas
         Me.grbdVentasProductos.TabStop = False
         Me.grbdVentasProductos.Visible = False
         '
-        'btnAgregarProducto
-        '
-        Me.btnAgregarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregarProducto.Location = New System.Drawing.Point(6, 13)
-        Me.btnAgregarProducto.Name = "btnAgregarProducto"
-        Me.btnAgregarProducto.Size = New System.Drawing.Size(165, 31)
-        Me.btnAgregarProducto.TabIndex = 9
-        Me.btnAgregarProducto.Text = "Agregar Productos"
-        Me.btnAgregarProducto.UseVisualStyleBackColor = True
-        '
         'btnQuitarProducto
         '
         Me.btnQuitarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -588,6 +590,16 @@ Partial Class frmVentas
         Me.btnQuitarProducto.TabIndex = 10
         Me.btnQuitarProducto.Text = "Quitar Productos"
         Me.btnQuitarProducto.UseVisualStyleBackColor = True
+        '
+        'btnAgregarProducto
+        '
+        Me.btnAgregarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarProducto.Location = New System.Drawing.Point(6, 13)
+        Me.btnAgregarProducto.Name = "btnAgregarProducto"
+        Me.btnAgregarProducto.Size = New System.Drawing.Size(165, 31)
+        Me.btnAgregarProducto.TabIndex = 9
+        Me.btnAgregarProducto.Text = "Agregar Productos"
+        Me.btnAgregarProducto.UseVisualStyleBackColor = True
         '
         'btnAgregarCliente
         '
@@ -621,7 +633,7 @@ Partial Class frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(770, 569)
+        Me.ClientSize = New System.Drawing.Size(769, 576)
         Me.Controls.Add(Me.lblIdVenta)
         Me.Controls.Add(Me.btnAgregarCliente)
         Me.Controls.Add(Me.grbdVentasProductos)
@@ -711,4 +723,5 @@ Partial Class frmVentas
     Friend WithEvents btnAgregarCliente As Button
     Friend WithEvents lblIdVenta As Label
     Friend WithEvents DventasTableAdapter1 As db_sistemaDataSetTableAdapters.dventasTableAdapter
+    Friend WithEvents btnImprimir As Button
 End Class
