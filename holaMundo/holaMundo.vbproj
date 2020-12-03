@@ -158,6 +158,12 @@
     <Compile Include="frmImpresionVentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmListadoClientes.Designer.vb">
+      <DependentUpon>frmListadoClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListadoClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmProductos.Designer.vb">
       <DependentUpon>frmProductos.vb</DependentUpon>
     </Compile>
@@ -174,6 +180,12 @@
       <DependentUpon>frmVentas.vb</DependentUpon>
     </Compile>
     <Compile Include="frmVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVentasPorCliente.Designer.vb">
+      <DependentUpon>frmVentasPorCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVentasPorCliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -215,6 +227,9 @@
     <EmbeddedResource Include="frmImpresionVentas.resx">
       <DependentUpon>frmImpresionVentas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListadoClientes.resx">
+      <DependentUpon>frmListadoClientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.vb</DependentUpon>
     </EmbeddedResource>
@@ -224,13 +239,18 @@
     <EmbeddedResource Include="frmVentas.resx">
       <DependentUpon>frmVentas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVentasPorCliente.resx">
+      <DependentUpon>frmVentasPorCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ifmVentas.rdlc" />
+    <EmbeddedResource Include="listadoClientes.rdlc" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ventasPorCliente.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="db_sistemaDataSet.xsc">

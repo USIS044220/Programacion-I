@@ -31,4 +31,16 @@
         objFacturaVenta.MdiParent = Me
         objFacturaVenta.Show()
     End Sub
+
+    Private Sub ListadoDeClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoDeClientesToolStripMenuItem.Click
+        Dim objListadoClientes As New frmListadoClientes
+        objListadoClientes.MdiParent = Me
+        objListadoClientes.Show()
+    End Sub
+
+    Private Sub ReporteVentasPorClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteVentasPorClienteToolStripMenuItem.Click
+        Dim objVentasPorCliente As New frmVentasPorCliente
+        objVentasPorCliente.MdiParent = Me
+        objVentasPorCliente.Show()
+    End Sub
 End Class

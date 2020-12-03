@@ -102,6 +102,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasPorClienteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:holaMundo.db_sistemaDataSet.categoriasRow">
 <summary>
 Represents strongly named DataRow class.
@@ -153,6 +158,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:holaMundo.db_sistemaDataSet.impresionVentasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasPorClienteRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -212,6 +222,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:holaMundo.db_sistemaDataSet.ventasPorClienteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:holaMundo.db_sistemaDataSetTableAdapters.categoriasTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -263,6 +278,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:holaMundo.db_sistemaDataSetTableAdapters.impresionVentasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:holaMundo.db_sistemaDataSetTableAdapters.ventasPorClienteTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
