@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmVentas
-
+    Public _idVta As Integer = 0
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         actualizarDs()
@@ -97,21 +97,20 @@ Public Class frmVentas
             Fecha_vtaDateTimePicker.Value = Date.Now
         Else 'Guardar
             Try
-                Dim _idVenta = Integer.Parse(lblIdVenta.Text)
+                _idVta = Integer.Parse(lblIdVenta.Text)
                 Me.Validate()
                 VentasBindingSource.EndEdit()
 
-                VentasTableAdapter.Connection.Open()
-                Dim comando As New SqlCommand
-                comando.Connection = VentasTableAdapter.Connection
-                If _idVenta > 0 Then 'Modificanco
-                    comando.CommandText = "delete from dventas where idVenta=" + _idVenta.ToString()
-                    comando.ExecuteNonQuery()
+                If _idVta > 0 Then 'Modificanco
+                    eliminarDetalle()
                 Else 'Agregando Nuevas Facturas
+                    VentasTableAdapter.Connection.Open()
+                    Dim comando As New SqlCommand
+                    comando.Connection = VentasTableAdapter.Connection
                     comando.CommandText = "SELECT ident_current('ventas') + 1 AS idVenta"
-                    _idVenta = Integer.Parse(comando.ExecuteScalar().ToString())
+                    _idVta = Integer.Parse(comando.ExecuteScalar().ToString())
+                    VentasTableAdapter.Connection.Close()
                 End If
-                VentasTableAdapter.Connection.Close()
 
                 Dim nfilas As Integer = DventasProductosDataGridView.Rows.Count
                 Dim valores(nfilas, 3) As String
@@ -128,7 +127,7 @@ Public Class frmVentas
 
                 For i = 0 To nfilas - 1
                     DventasTableAdapter1.Insert(
-                        _idVenta,
+                        _idVta,
                         valores(i, 0),
                         valores(i, 1),
                         valores(i, 2)
@@ -147,6 +146,16 @@ Public Class frmVentas
 
         End If
     End Sub
+    Private Sub eliminarDetalle()
+        VentasTableAdapter.Connection.Open()
+        Dim comando As New SqlCommand
+        comando.Connection = VentasTableAdapter.Connection
+
+        comando.CommandText = "delete from dventas where idVenta=" + _idVta.ToString()
+        comando.ExecuteNonQuery()
+        VentasTableAdapter.Connection.Close()
+    End Sub
+
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If btnModificar.Text = "Modificar" Then
             btnAgregar.Text = "Guardar"
@@ -203,5 +212,16 @@ Public Class frmVentas
         Dim objImprimirVta As New frmImpresionVentas
         objImprimirVta._idVta = lblIdVenta.Text
         objImprimirVta.ShowDialog()
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        _idVta = Integer.Parse(lblIdVenta.Text)
+        eliminarDetalle()
+
+        VentasBindingSource.RemoveAt(VentasBindingSource.Position)
+        VentasBindingSource.EndEdit()
+        TableAdapterManager.UpdateAll(Db_sistemaDataSet)
+
+        actualizarDs()
     End Sub
 End Class
